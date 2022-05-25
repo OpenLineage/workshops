@@ -1,11 +1,15 @@
 DROP TABLE IF EXISTS top_products;
 
 CREATE TABLE top_products AS
-    SELECT
-        product,
-        count(order_id) as num_orders,
-        sum(quantity) as total_quantity,
-        sum(price * quantity) as total_value
-    FROM orders
-    group by product
-    order by total_value desc, num_orders desc;
+SELECT
+    product,
+    COUNT(order_id) AS num_orders,
+    SUM(quantity) AS total_quantity,
+    SUM(price * quantity) AS total_value
+FROM
+    orders
+GROUP BY
+    product
+ORDER BY
+    total_value desc,
+    num_orders desc;
