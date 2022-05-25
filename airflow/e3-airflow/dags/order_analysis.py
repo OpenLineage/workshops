@@ -5,7 +5,6 @@ from airflow.utils.task_group import TaskGroup
 from datetime import datetime, timedelta
 
 
-# Instantiate DAG
 with DAG(
     "order_analysis",
     start_date=datetime(2022, 5, 1),
@@ -23,7 +22,6 @@ with DAG(
 
     t0 = DummyOperator(task_id="start")
 
-    # Define task to send email
     import_orders = PostgresOperator(
         task_id="import_orders",
         postgres_conn_id="workshop",
@@ -42,6 +40,4 @@ with DAG(
         sql="top_products.sql",
     )
 
-    # Define task dependencies
-    #t0 >> import_orders >> summarize_months >> find_popular_products
-    t0 >> import_orders
+    t0 >> import_orders >> summarize_months >> find_popular_products
