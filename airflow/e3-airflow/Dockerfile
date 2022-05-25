@@ -9,4 +9,5 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 USER airflow
-RUN pip install --no-cache-dir openlineage-airflow openlineage-sql
+RUN pip install --no-cache-dir openlineage-airflow
+RUN pip install --no-cache-dir openlineage-sql

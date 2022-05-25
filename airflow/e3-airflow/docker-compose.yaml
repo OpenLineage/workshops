@@ -60,6 +60,7 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     OPENLINEAGE_URL: 'http://marquez-api:5000'
+    OPENLINEAGE_NAMESPACE: 'workshop'
     AIRFLOW_CONN_WORKSHOP: 'postgresql://workshop:workshop@workshop-db/workshop'
   volumes:
     - ./dags:/opt/airflow/dags
@@ -90,7 +91,7 @@ services:
 
   workshop-db:
     image: postgres:13
-    environment: 
+    environment:
       POSTGRES_USER: workshop
       POSTGRES_PASSWORD: workshop
       POSTGRES_DB: workshop
