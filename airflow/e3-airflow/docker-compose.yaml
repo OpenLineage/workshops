@@ -59,8 +59,8 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    OPENLINEAGE_URL: 'http://localhost:5000'
-    AIRFLOW_CONN_EXAMPLE: 'postgresql://ol-workshop:ol-workshop@workshop-db/ol-workshop'
+    OPENLINEAGE_URL: 'http://marquez-api:5000'
+    AIRFLOW_CONN_WORKSHOP: 'postgresql://workshop:workshop@workshop-db/workshop'
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
@@ -91,9 +91,9 @@ services:
   workshop-db:
     image: postgres:13
     environment: 
-      POSTGRES_USER: ol-workshop
-      POSTGRES_PASSWORD: ol-workshop
-      POSTGRES_DB: ol-workshop
+      POSTGRES_USER: workshop
+      POSTGRES_PASSWORD: workshop
+      POSTGRES_DB: workshop
     ports:
       - 5432:5432
 
@@ -278,6 +278,11 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+
+networks:
+  default:
+    external: true
+    name: marquez_default
 
 volumes:
   postgres-db-volume:
