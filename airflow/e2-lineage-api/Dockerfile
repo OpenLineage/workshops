@@ -11,4 +11,4 @@ RUN apt-get update \
 USER airflow
 RUN pip install --no-cache-dir openlineage-airflow
 RUN pip install --no-cache-dir openlineage-sql
-# RUN pip install --no-cache-dir openlineage-python
+RUN pip install --no-cache-dir openlineage-python
