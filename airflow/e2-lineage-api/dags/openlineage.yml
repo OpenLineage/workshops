@@ -1,6 +1,0 @@
-transport:
-  type: "http"
-  url: "https://localhost:5000"
-  # auth:
-  #   type: "api_key"
-  #   api_key: "f048521b-dfe8-47cd-9c65-0cb07d57591e"

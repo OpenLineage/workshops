@@ -1,5 +1,6 @@
 from openlineage.client.run import RunEvent, RunState, Run, Job 
 from openlineage.client.client import OpenLineageClient, OpenLineageClientOptions
+from openlineage.common.dataset import Dataset, InputDataset, OutputDataset
 import os
 import datetime
 import uuid
@@ -7,7 +8,6 @@ import uuid
 client = OpenLineageClient.from_environment()
 
 runID = 'a0ccded8-dd37-11ec-9d64-0242ac120002'
-print(runID)
 
 client.emit(RunEvent(
     RunState.COMPLETE,
