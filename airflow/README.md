@@ -8,6 +8,11 @@ Marquez, a lineage metadata server, is a simple thing designed to watch complex 
 
 In this workshop, you will learn how to collect and visualize lineage from a basic Airflow pipeline using Marquez. You will need to understand the basics of Airflow, but no experience with lineage is required.
 
+The workshop contains three exercises:
+* Installing Marquez
+* Exploring the Lineage API
+* OpenLineage and Airflow
+
 ## Prerequisites
 
 * Docker 17.05+
@@ -16,15 +21,6 @@ In this workshop, you will learn how to collect and visualize lineage from a bas
 * 4 GB of available memory (the minimum for Docker — more is strongly recommended)
 
 ## Installation
-
-Recommendation: create a virtual environment for your project for easy removal of packages later.
-
-```
-mkdir dirname # create the project dir
-cd dirname
-python3 -m venv path/to/venvname # create the venv
-source venvname/bin/activate # activate
-```
 
 ### Docker
 
