@@ -24,17 +24,17 @@ The workshop contains three exercises:
 
 ### Docker
 
-Go to https://docs.docker.com/engine/install/ and install the version of Docker for your OS.
-Verify installation with `docker version` and `docker-compose -v`.
+To install the version of Docker for your OS, go to https://docs.docker.com/engine/install/.
+You can verify installation with `docker version` and `docker-compose -v`.
 
 ### Git
 
-Verify installation of Git with `git version`. 
+You can verify installation of Git with `git version`. 
 To install Git on Linux: `sudo apt install git-all` (Ubuntu) or `sudo dnf install git-all` (Fedora).
 
 ### Workshop Files
 
-Clone the workshop repository:
+To clone the workshop repository:
 
 `git clone git@github.com:OpenLineage/workshops.git` (using SSH)
 
@@ -42,6 +42,6 @@ or
 
 `git clone https://github.com/OpenLineage/workshops.git` (using HTTPS)
 
-Navigate to the Airflow workshop:
+To navigate to the Airflow workshop:
 
 `cd airflow`

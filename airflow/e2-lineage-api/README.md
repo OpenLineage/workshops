@@ -35,10 +35,10 @@ Then, install the `openlineage-python` package:
 pip install -r requirements.txt
 ```
 
-Then, run the Python script.
+Then, run the Python script:
 
 ```
 ./generate-events.py
 ```
 
-Before moving on to exercise 3, stop the e2-lineage-api container in Docker Desktop.
+We recommend stopping the `e2-lineage-api` container in Docker Desktop before moving on to exercise 3.
