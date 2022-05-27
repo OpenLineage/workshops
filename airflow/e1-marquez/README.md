@@ -16,7 +16,7 @@ git clone git@github.com:marquezproject/marquez.git
 
 Start Docker Desktop
 
-In a terminal window, navigate to Marquez and run it (with `--seed` if you want sample data):
+In the same terminal window, navigate to Marquez and run it (with `--seed` if you want sample data):
 
 ```
 cd marquez
@@ -24,3 +24,5 @@ cd marquez
 ```
 
 Verify that Marquez is running by opening this address in a browser: http://localhost:3000/
+
+Verify that sample data has been seeded by clicking on the `ns` (namespace) drop-down menu in the top right corner. If you see `food delivery` there, data has been loaded.
