@@ -1,12 +1,12 @@
 # Exploring the Lineage API
 
-This session covers how to interact with the OpenLineage API, both using `curl` and the Python client library.
+This session covers how to interact with the OpenLineage API, both using `curl` and the [Python client library](https://pypi.org/project/openlineage-python/).
 
 ## Curl
 
 Once Marquez is running on localhost, these two commands will start and complete a sample job run.
 
-Before running them, make sure you have navigated to the `e2-lineage-api` directory in the workshops repository.
+Before running them, make sure you have navigated to the `e2-lineage-api` directory in the `workshops` repository.
 
 ```
 curl -X POST http://localhost:5000/api/v1/lineage \

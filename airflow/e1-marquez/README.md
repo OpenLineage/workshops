@@ -1,6 +1,6 @@
 # Installing and Exploring Marquez
 
-Marquez is an open-source metadata service implementing the OpenLineage standard.
+[Marquez](https://marquezproject.ai/) is an open-source metadata service implementing the [OpenLineage](https://openlineage.io/) standard.
 
 This session covers how to install Marquez and run it with pre-seeded data.
 
@@ -16,7 +16,7 @@ or
 
 ## Running Marquez
 
-Marquez requires that Docker be running, so start the Docker Desktop application.
+Marquez requires that Docker be running, so start the Docker Desktop application before attempting to run Marquez.
 
 Then, in the directory where you cloned the Marquez repository, navigate to Marquez and run it (with `--seed` if you want sample data):
 

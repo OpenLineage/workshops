@@ -1,6 +1,6 @@
 # Generating and Exploring Lineage Data from Airflow DAGs
 
-This session covers how to use OpenLineage's Airflow integration to generate and explore lineage data about DAGs.
+This session covers how to use OpenLineage's [Airflow integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow) to generate and explore lineage data about DAGs.
 
 Check your available memory:
 

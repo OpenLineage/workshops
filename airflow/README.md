@@ -2,7 +2,7 @@
 
 [Slide Presentation](https://docs.google.com/presentation/d/1qo3ebLfxBlcJmzULzoNMpl9OZZf8fnVb5nmxXh6IJ5Q/edit?usp=sharing)
 
-An Introduction to Data Lineage with Airflow and Marquez
+## An Introduction to Data Lineage with Airflow and Marquez
 
 Data lineage might seem like a complicated and unapproachable topic, but that’s only because data pipelines are complicated. The core concept is straightforward: trace and record the journey of datasets as they travel through a data pipeline.
 
