@@ -16,11 +16,11 @@ online_orders = Dataset(namespace="workshop", name="online_orders")
 mail_orders = Dataset(namespace="workshop", name="mail_orders")
 orders = Dataset(namespace="workshop", name="orders")
 
-# Create a Run object with a unique ID
-run = Run(str(uuid4()))
-
 # Create a Job object
 job = Job(namespace="workshop", name="process_orders")
+
+# Create a Run object with a unique ID
+run = Run(str(uuid4()))
 
 # Emit a START run event
 client.emit(
