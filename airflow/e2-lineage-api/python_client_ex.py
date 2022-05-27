@@ -6,8 +6,16 @@ import datetime
 import uuid
 
 client = OpenLineageClient.from_environment()
+dataset = Dataset.from_table()
 
 runID = 'a0ccded8-dd37-11ec-9d64-0242ac120002'
+
+dataset.emit(InputDataset(
+    namespace='default',
+    name='example',
+)
+
+)
 
 client.emit(RunEvent(
     RunState.COMPLETE,
