@@ -41,3 +41,7 @@ Clone the workshop repository:
 or
 
 `git clone https://github.com/OpenLineage/workshops.git` (using HTTPS)
+
+Navigate to the Airflow workshop:
+
+`cd airflow`
