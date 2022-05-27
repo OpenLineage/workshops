@@ -4,7 +4,7 @@ Marquez is an open-source metadata service implementing the OpenLineage standard
 
 This session covers how to install Marquez and run it with pre-seeded data.
 
-## Installing Marquez
+## Install Marquez
 
 Clone the Marquez repository using Git:
 
@@ -12,7 +12,11 @@ Clone the Marquez repository using Git:
 git clone git@github.com:marquezproject/marquez.git
 ```
 
-Navigate to Marquez and run it (with `--seed` if you want sample data):
+## Run Marquez
+
+Start Docker Desktop
+
+In a terminal window, navigate to Marquez and run it (with `--seed` if you want sample data):
 
 ```
 cd marquez
