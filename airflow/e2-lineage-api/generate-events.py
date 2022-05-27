@@ -9,36 +9,39 @@ from uuid import uuid4
 client = OpenLineageClient.from_environment()
 
 # Specify the producer of this lineage metadata
-producer = 'https://github.com/OpenLineage/workshops'
+producer = "https://github.com/OpenLineage/workshops"
 
 # Create some basic Dataset objects for our fictional pipeline
-online_orders = Dataset(namespace='workshop', name='online_orders')
-mail_orders = Dataset(namespace='workshop', name='mail_orders')
-orders = Dataset(namespace='workshop', name='orders')
+online_orders = Dataset(namespace="workshop", name="online_orders")
+mail_orders = Dataset(namespace="workshop", name="mail_orders")
+orders = Dataset(namespace="workshop", name="orders")
 
-# Generate a unique ID for this run
-runID = str(uuid4())
+# Create a Run object with a unique ID
+run = Run(str(uuid4()))
+
+# Create a Job object
+job = Job(namespace="workshop", name="process_orders")
 
 # Emit a START run event
-client.emit(RunEvent(
-    RunState.START,
-    datetime.now().isoformat(),
-    Run(runID),
-    Job(namespace='workshop', name='process_orders'),
-    producer
-))
+client.emit(
+    RunEvent(
+        RunState.START,
+        datetime.now().isoformat(),
+        run, job, producer
+    )
+)
 
 #
 # This is where our application would do the actual work :)
 #
 
 # Emit a COMPLETE run event
-client.emit(RunEvent(
-    RunState.COMPLETE,
-    datetime.now().isoformat(),
-    Run(runID),
-    Job(namespace='workshop', name='process_orders'),
-    producer,
-    inputs=[online_orders, mail_orders],
-    outputs=[orders]
-))
+client.emit(
+    RunEvent(
+        RunState.COMPLETE,
+        datetime.now().isoformat(),
+        run, job, producer,
+        inputs=[online_orders, mail_orders],
+        outputs=[orders],
+    )
+)
