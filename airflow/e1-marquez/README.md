@@ -4,31 +4,27 @@ Marquez is an open-source metadata service implementing the OpenLineage standard
 
 This session covers how to install Marquez and run it with pre-seeded data.
 
-## Install Marquez
+## Installing Marquez
 
-To clone the Marquez repository using Git use:
+To clone the Marquez repository with Git, use:
 
-```
-git clone git@github.com:marquezproject/marquez.git
-```
+`git clone git@github.com:marquezproject/marquez.git` (SSH)
 
 or
 
-```
-git clone https://github.com/MarquezProject/marquez.git
-```
+`git clone https://github.com/MarquezProject/marquez.git` (HTTPS)
 
-## Run Marquez
+## Running Marquez
 
-Starting Docker Desktop
+Marquez requires that Docker be running, so start the Docker Desktop application.
 
-In the same terminal window, navigate to Marquez and run it (with `--seed` if you want sample data):
+Then, in the directory where you cloned the Marquez repository, navigate to Marquez and run it (with `--seed` if you want sample data):
 
 ```
 cd marquez
 ./docker/up.sh --seed
 ```
 
-To verify that Marquez is running, open this address in a browser: http://localhost:3000/
+Now you can access Marquez! To do so, point a browser to http://localhost:3000/.
 
-To verify that sample data has been seeded, you can click on the `ns` (namespace) drop-down menu in the top right corner. If you see `food delivery` there, data has been loaded.
+To view lineage data about the seed data, select the `food delivery` namespace (in the `ns` drop-down).
