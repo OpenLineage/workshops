@@ -14,3 +14,25 @@ In this workshop, you will learn how to collect and visualize lineage from a bas
 * Docker Compose 1.29.1+
 * Git (preinstalled on most versions of MacOS; verify with `git version`)
 * 4 GB of available memory (the minimum for Docker — more is strongly recommended)
+
+## Installation
+
+Recommendation: create a virtual environment for your project for easy removal of packages later.
+
+```
+mkdir dirname # create the project dir
+cd dirname
+python3 -m venv path/to/venvname # create the venv
+source venvname/bin/activate # activate
+```
+
+### Docker
+
+Go to https://docs.docker.com/engine/install/ and install the version of Docker for your OS.
+Verify installation with `docker version` and `docker-compose -v`.
+
+### Git
+
+Verify installation of Git with `git version`. 
+To install Git on Linux: `sudo apt install git-all` (Ubuntu) or `sudo dnf install git-all` (Fedora).
+
