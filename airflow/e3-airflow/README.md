@@ -22,3 +22,5 @@ Run Airflow using `docker-compose`:
 docker-compose up airflow-init
 docker-compose up
 ```
+
+To view lineage from the DAG in Marquez, point your browser to http://localhost:3000 and select the `workshop` namespace.  

@@ -40,3 +40,5 @@ Then, run the Python script.
 ```
 ./generate-events.py
 ```
+
+Before moving on to exercise 3, stop the e2-lineage-api container in Docker Desktop.
