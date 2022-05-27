@@ -1,6 +1,6 @@
 # Generating and Exploring Lineage Data from Airflow DAGs
 
-This session covers how to use OpenLineage's Airflow integration to generate and explore lineage data about DAGs.
+This session covers how to use OpenLineage's [Airflow integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow) to generate and explore lineage data about DAGs.
 
 Check your available memory:
 
@@ -22,3 +22,5 @@ Run Airflow using `docker-compose`:
 docker-compose up airflow-init
 docker-compose up
 ```
+
+To view lineage from the DAG in Marquez, point your browser to http://localhost:3000 and select the `workshop` namespace.  
