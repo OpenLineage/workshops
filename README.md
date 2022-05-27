@@ -1,3 +1,3 @@
-# workshops
+# OpenLineage Workshops
 
-A repository of workshop curricula for OpenLineage events.
+A repository of curricula for OpenLineage workshops, tutorials and guides 
