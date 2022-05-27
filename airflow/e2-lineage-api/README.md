@@ -1,18 +1,10 @@
-# Exploring the OpenLineage Python Client
+# Exploring the Lineage API
 
-This session covers how to install, import and use OpenLineage's Python client.
+This session covers how to interact with the OpenLineage API, both using `curl` and the Python client library.
 
-In the environment:
+## Curl
 
-`pip install openlineage-python`
-
-In a Python script:
-
-```
-from openlineage.client.run import RunEvent, RunState, Run, Job 
-from openlineage.client.client import OpenLineageClient, OpenLineageClientOptions
-from openlineage.common.dataset import Dataset, InputDataset, OutputDataset
-import os
+Once Marquez is running on localhost, these two commands will start and complete a sample job run.
 
 ```
 curl -X POST http://localhost:5000/api/v1/lineage \
@@ -26,11 +18,22 @@ curl -X POST http://localhost:5000/api/v1/lineage \
 	-d @json/completejob.json
 ```
 
+## Python
+
+First, create a Python virtual environment:
+
 ```
 python3 -m venv .venv
 source .venv/bin/activate
+```
+
+Then, install the `openlineage-python` package:
+
+```
 pip install -r requirements.txt
 ```
+
+Then, run the Python script.
 
 ```
 ./generate-events.py
