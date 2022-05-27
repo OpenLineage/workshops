@@ -32,3 +32,12 @@ Verify installation with `docker version` and `docker-compose -v`.
 Verify installation of Git with `git version`. 
 To install Git on Linux: `sudo apt install git-all` (Ubuntu) or `sudo dnf install git-all` (Fedora).
 
+### Workshop Files
+
+Clone the workshop repository:
+
+`git clone git@github.com:OpenLineage/workshops.git` (using SSH)
+
+or
+
+`git clone https://github.com/OpenLineage/workshops.git` (using HTTPS)
