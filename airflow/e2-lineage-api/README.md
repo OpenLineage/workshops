@@ -6,6 +6,8 @@ This session covers how to interact with the OpenLineage API, both using `curl` 
 
 Once Marquez is running on localhost, these two commands will start and complete a sample job run.
 
+Before running them, make sure you have navigated to the `e2-lineage-api` directory in the workshops repository.
+
 ```
 curl -X POST http://localhost:5000/api/v1/lineage \
 	-H 'Content-Type: application/json' \
