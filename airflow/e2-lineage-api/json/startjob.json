@@ -5,12 +5,12 @@
     "runId": "d46e465b-d358-4d32-83d4-df660ff614dd"
   },
   "job": {
-    "namespace": "my-namespace",
-    "name": "my-job"
+    "namespace": "workshop",
+    "name": "process_taxes"
   },
   "inputs": [{
-    "namespace": "my-namespace",
-    "name": "my-input"
+    "namespace": "postgres://workshop-db:None",
+    "name": "workshop.public.taxes"
   }],  
   "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client"
 }
