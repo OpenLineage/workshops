@@ -12,12 +12,13 @@ client = OpenLineageClient.from_environment()
 producer = "https://github.com/OpenLineage/workshops"
 
 # Create some basic Dataset objects for our fictional pipeline
-online_orders = Dataset(namespace="workshop", name="online_orders")
-mail_orders = Dataset(namespace="workshop", name="mail_orders")
-orders = Dataset(namespace="workshop", name="orders")
+monthly_summary = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.monthly_summary")
+commissions = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.commissions")
+taxes = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.taxes")
+
 
 # Create a Job object
-job = Job(namespace="workshop", name="process_orders")
+job = Job(namespace="workshop", name="monthly_accounting")
 
 # Create a Run object with a unique ID
 run = Run(str(uuid4()))
@@ -41,7 +42,7 @@ client.emit(
         RunState.COMPLETE,
         datetime.now().isoformat(),
         run, job, producer,
-        inputs=[online_orders, mail_orders],
-        outputs=[orders],
+        inputs=[monthly_summary],
+        outputs=[commissions, taxes],
     )
 )
