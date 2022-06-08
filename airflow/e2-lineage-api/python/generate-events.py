@@ -16,7 +16,6 @@ monthly_summary = Dataset(namespace="postgres://workshop-db:None", name="worksho
 commissions = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.commissions")
 taxes = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.taxes")
 
-
 # Create a Job object
 job = Job(namespace="workshop", name="monthly_accounting")
 
