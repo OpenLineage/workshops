@@ -23,4 +23,6 @@ docker-compose up airflow-init
 docker-compose up
 ```
 
+Once Airflow has started, visit http://localhost:8080 and log in using airflow/airflow. Then enable the `order_analysis` DAG.
+
 To view lineage from the DAG in Marquez, point your browser to http://localhost:3000 and select the `workshop` namespace.  
