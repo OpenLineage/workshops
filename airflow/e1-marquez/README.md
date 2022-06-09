@@ -6,13 +6,11 @@ This session covers how to install Marquez and run it with pre-seeded data.
 
 ## Installing Marquez
 
+This repository has been set up with Marquez as a submodule.
+
 To clone the Marquez repository with Git, use:
 
-`git clone git@github.com:marquezproject/marquez.git` (SSH)
-
-or
-
-`git clone https://github.com/MarquezProject/marquez.git` (HTTPS)
+`git submodule update --init`
 
 ## Running Marquez
 
