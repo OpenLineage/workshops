@@ -27,4 +27,4 @@ cd marquez
 
 Now you can access Marquez! To do so, point a browser to http://localhost:3000/.
 
-To view lineage data about the seed data, select the `food delivery` namespace (in the `ns` drop-down).
+To view sample lineage data, select the `food delivery` namespace (in the `ns` drop-down).
