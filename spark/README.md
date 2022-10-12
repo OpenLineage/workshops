@@ -58,6 +58,6 @@ Please refer to the [Quickstart with Jupyter](https://openlineage.io/docs/integr
 
 ### Installing the Jupyter notebook
 
-When the docker compose is up and running, login to Jupyter notebook using your browser, as mentioned [here](https://openlineage.io/docs/integrations/spark/quickstart_local). Then, in the Jupyter notebook's `openlinage` folder, upload the file `column-lineage-oct-2022.ipnb` by using upload button or simply dragging and dropping the file into the folder.
+When the docker compose is up and running, login to Jupyter notebook using your browser, as mentioned [here](https://openlineage.io/docs/integrations/spark/quickstart_local). Then, in the Jupyter notebook's `notebook` folder, upload the file `column-lineage-oct-2022.ipnb` by using upload button or simply dragging and dropping the file into the folder.
 
 Open the notebook file once it's uploaded, and follow the instructions.
