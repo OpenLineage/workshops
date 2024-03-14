@@ -14,7 +14,7 @@ public class EnvUtils {
 
   public static void waitForSchemaRegistry() {
     await()
-        .atMost(Duration.ofSeconds(60))
+        .atMost(Duration.ofSeconds(120))
         .pollInterval(Duration.ofSeconds(1))
         .until(() -> {
           try {
