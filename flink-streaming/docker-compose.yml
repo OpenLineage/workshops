@@ -39,7 +39,7 @@ services:
     ports:
       - 3000:3000
     links:
-     - "api:marquez"
+      - "api:marquez"
     depends_on:
       - api
 
@@ -284,9 +284,22 @@ services:
     command: ['/tmp/wait-for-it.sh', 'schema-registry:28081', '--','/bin/bash', '/tmp/generate_events.sh']
     depends_on:
       - registry
-  flink-job1:
+  flink-taskmanager1:
     image: flink:1.18-java11
-    hostname: flink_job1
+    container_name: taskmanager1
+    volumes:
+      - ./docker/wait-for-it.sh:/opt/flink/wait-for-it.sh
+      - ./flink-app/build/libs/flink-app-all.jar:/opt/flink/lib/flink-app-all.jar
+    hostname: taskmanager1
+    command: taskmanager
+    links:
+      - "db:postgres"
+    depends_on:
+      - flink-jobmanager1
+    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/opt/flink/bin/taskmanager.sh', 'start-foreground', '-Djobmanager.rpc.address=jobmanager1', '-Dtaskmanager.numberOfTaskSlots=2' ]
+  flink-jobmanager1:
+    image: flink:1.18-java11
+    hostname: jobmanager1
     links:
       - "db:postgres"
       - registry
@@ -294,16 +307,30 @@ services:
       - ./docker/wait-for-it.sh:/opt/flink/wait-for-it.sh
       - ./flink-app/build/libs/flink-app-all.jar:/opt/flink/lib/flink-app-all.jar
       - ./docker/openlineage.yml:/tmp/openlineage.yml
-      - ./docker/start_flink_job_1.sh:/opt/flink/start_flink_job_1.sh
+    ports:
+      - 8081:8081
     environment:
       OPENLINEAGE_CONFIG: '/tmp/openlineage.yml'
     depends_on:
       - generate-events
       - api
-    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/bin/bash', '/opt/flink/start_flink_job_1.sh' ]
-  flink-job2:
+    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/opt/flink/bin/standalone-job.sh', 'start-foreground', '--job-classname', 'io.openlineage.flink.FromTopicToPostgresApplication', '-Djobmanager.rpc.address=jobmanager1', '-Dexecution.attached=true' ]
+  flink-taskmanager2:
     image: flink:1.18-java11
-    hostname: flink_job2
+    container_name: taskmanager2
+    volumes:
+      - ./docker/wait-for-it.sh:/opt/flink/wait-for-it.sh
+      - ./flink-app/build/libs/flink-app-all.jar:/opt/flink/lib/flink-app-all.jar
+    hostname: taskmanager2
+    command: taskmanager
+    links:
+      - "db:postgres"
+    depends_on:
+      - flink-jobmanager1
+    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/opt/flink/bin/taskmanager.sh', 'start-foreground', '-Djobmanager.rpc.address=jobmanager2', '-Dtaskmanager.numberOfTaskSlots=2' ]
+  flink-jobmanager2:
+    image: flink:1.18-java11
+    hostname: jobmanager2
     links:
       - "db:postgres"
       - registry
@@ -311,10 +338,11 @@ services:
       - ./docker/wait-for-it.sh:/opt/flink/wait-for-it.sh
       - ./flink-app/build/libs/flink-app-all.jar:/opt/flink/lib/flink-app-all.jar
       - ./docker/openlineage.yml:/tmp/openlineage.yml
-      - ./docker/start_flink_job_2.sh:/opt/flink/start_flink_job_2.sh
+    ports:
+      - 8082:8081
     environment:
       OPENLINEAGE_CONFIG: '/tmp/openlineage.yml'
     depends_on:
       - generate-events
       - api
-    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/bin/bash', '/opt/flink/start_flink_job_2.sh' ]
+    entrypoint: [ './wait-for-it.sh', 'marquez-api:5000', '--', '/opt/flink/bin/standalone-job.sh', 'start-foreground', '--job-classname', 'io.openlineage.flink.FromPostgresToTopicApplication', '-Djobmanager.rpc.address=jobmanager2', '-Dexecution.attached=true' ]

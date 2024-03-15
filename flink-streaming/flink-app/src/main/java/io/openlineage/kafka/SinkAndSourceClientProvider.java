@@ -101,8 +101,8 @@ public class SinkAndSourceClientProvider {
 
     TypeInformation<?>[] fieldTypes = new TypeInformation<?>[] {
         BasicTypeInfo.STRING_TYPE_INFO,
-        BasicTypeInfo.STRING_TYPE_INFO,
-        SqlTimeTypeInfo.TIMESTAMP
+        BasicTypeInfo.LONG_TYPE_INFO,
+        BasicTypeInfo.LONG_TYPE_INFO
     };
 
     RowTypeInfo rowTypeInfo = new RowTypeInfo(fieldTypes);
