@@ -31,7 +31,7 @@ x-airflow-common:
 
 services:
   web:
-    image: "marquezproject/marquez-web:latest"
+    image: "marquezproject/marquez-web:0.46.0"
     container_name: marquez-web
     environment:
       - MARQUEZ_HOST=api
@@ -44,7 +44,7 @@ services:
       - api
 
   api:
-    image: marquezproject/marquez:latest
+    image: marquezproject/marquez:0.46.0
     container_name: marquez-api
     ports:
       - "5000:5000"
