@@ -18,8 +18,13 @@ repositories {
             ignoreGradleMetadataRedirection()
         }
     }
-    gradlePluginPortal()
-    mavenCentral()
+    mavenCentral() {
+        metadataSources {
+            mavenPom()
+            artifact()
+            ignoreGradleMetadataRedirection()
+        }
+    }
     maven {
         url "https://packages.confluent.io/maven/"
     }
@@ -36,7 +41,7 @@ shadowJar {
 
 ext {
     flinkVersion = "1.18.1"
-    openLineageVersion = "1.10.0-SNAPSHOT" // TODO: remove snapshot
+    openLineageVersion = "1.10.2"
     flinkVersionShort = flinkVersion.substring(0,4)
     hadoopVersion = '3.3.1'
 

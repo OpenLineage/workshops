@@ -23,13 +23,12 @@ public class FromPostgresToTopicApplication {
     StreamExecutionEnvironment env = setupEnv(args);
     env
         .createInput(aJdbcInputFormat())
-        .map(row -> {
-          return new OutputEvent(
+        .map(row -> new OutputEvent(
               (String)row.getField(0),
               (long)row.getField(1),
               (long)row.getField(2)
-          );
-        })
+          )
+        )
         .sinkTo(aKafkaSink("io.openlineage.flink.kafka.output"));
     // OpenLineage specific code
     env.registerJobListener(
