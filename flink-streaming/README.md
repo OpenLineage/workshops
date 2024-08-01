@@ -11,7 +11,7 @@ or build locally when testing local changes. This is controlled by `openLineageV
 
 Application is built with Java 11
 ```
-sh ./flink app
+cd ./flink-app
 ./gradlew clean build
 ```
 
