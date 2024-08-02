@@ -41,7 +41,7 @@ shadowJar {
 
 ext {
     flinkVersion = "1.18.1"
-    openLineageVersion = "1.10.2"
+    openLineageVersion = "1.19.0"
     flinkVersionShort = flinkVersion.substring(0,4)
     hadoopVersion = '3.3.1'
 
