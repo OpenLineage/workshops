@@ -1,7 +1,7 @@
 version: "3.7"
 x-airflow-common:
   &airflow-common
-  image: apache/airflow:2.8.2
+  image: apache/airflow:2.9.3
   environment:
     &airflow-common-env
     OPENLINEAGE_URL: http://api:5000
@@ -31,7 +31,7 @@ x-airflow-common:
 
 services:
   web:
-    image: "marquezproject/marquez-web:0.46.0"
+    image: "marquezproject/marquez-web:0.48.0"
     container_name: marquez-web
     environment:
       - MARQUEZ_HOST=api
@@ -44,7 +44,7 @@ services:
       - api
 
   api:
-    image: marquezproject/marquez:0.46.0
+    image: marquezproject/marquez:0.48.0
     container_name: marquez-api
     ports:
       - "5000:5000"
@@ -163,17 +163,6 @@ services:
         function ver() {
           printf "%04d%04d%04d%04d" $${1//./ }
         }
-        airflow_version=$$(AIRFLOW__LOGGING__LOGGING_LEVEL=INFO && gosu airflow airflow version)
-        airflow_version_comparable=$$(ver $${airflow_version})
-        min_airflow_version=2.2.0
-        min_airflow_version_comparable=$$(ver $${min_airflow_version})
-        if (( airflow_version_comparable < min_airflow_version_comparable )); then
-          echo
-          echo -e "\033[1;31mERROR!!!: Too old Airflow version $${airflow_version}!\e[0m"
-          echo "The minimum Airflow version supported: $${min_airflow_version}. Only use this or higher!"
-          echo
-          exit 1
-        fi
         if [[ -z "${AIRFLOW_UID}" ]]; then
           echo
           echo -e "\033[1;33mWARNING!!!: AIRFLOW_UID not set!\e[0m"
