@@ -1,0 +1,69 @@
+services:
+  web:
+    image: "marquezproject/marquez-web:0.50.0"
+    container_name: marquez-web
+    environment:
+      - MARQUEZ_HOST=marquez
+      - MARQUEZ_PORT=9000
+      - WEB_PORT=3000
+      - REACT_APP_ADVANCED_SEARCH=true
+    ports:
+      - 3000:3000
+    links:
+      - "api:marquez"
+    depends_on:
+      - api
+
+  api:
+    image: marquezproject/marquez:0.50.0
+    container_name: marquez-api
+    environment:
+      - MARQUEZ_PORT=9000
+      - MARQUEZ_ADMIN_PORT=5001
+      - POSTGRES_HOST=db
+      - SEARCH_ENABLED=false
+    ports:
+      - "9000:9000"
+      - "5001:5001"
+    volumes:
+      - ./docker/wait-for-it.sh:/usr/src/app/wait-for-it.sh
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/api/v1/namespaces" ]
+      interval: 200s
+      timeout: 200s
+      retries: 5
+    links:
+      - "db:postgres"
+    depends_on:
+      - db
+    entrypoint: [ "./wait-for-it.sh", "db:5432", "--", "./entrypoint.sh" ]
+
+  db:
+    image: postgres:13
+    container_name: marquez-db
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "marquez" ]
+      interval: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      MARQUEZ_DB: marquez
+      MARQUEZ_USER: marquez
+      MARQUEZ_PASSWORD: marquez
+    volumes:
+      - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+
+  notebook:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./docker/notebooks:/home/jovyan/notebooks
+      - ./docker/jars:/tmp/jars
+    links:
+      - "api:marquez"
+    depends_on:
+      - api
